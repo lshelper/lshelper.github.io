@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Ropa Sans SC PTT';
+    src: url('subset-RopaSansSCPTT-Regular.woff2') format('woff2'),
+        url('subset-RopaSansSCPTT-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ropa Sans SC PTT';
+    src: url('subset-RopaSansSCPTT-Italic.woff2') format('woff2'),
+        url('subset-RopaSansSCPTT-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Journal Sans New';
+    src: url('subset-JournalSansNew-Bold.woff2') format('woff2'),
+        url('subset-JournalSansNew-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Ropa Sans SC Pro';
+    src: url('subset-RopaSansSCPro-Italic.woff2') format('woff2'),
+        url('subset-RopaSansSCPro-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Ropa Sans SC Pro';
+    src: url('subset-RopaSansSCPro-Regular.woff2') format('woff2'),
+        url('subset-RopaSansSCPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Journal Sans New';
+    src: url('subset-JournalSansNew-Regular.woff2') format('woff2'),
+        url('subset-JournalSansNew-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
