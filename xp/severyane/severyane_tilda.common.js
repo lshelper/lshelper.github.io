@@ -3443,15 +3443,15 @@ var external_jQuery_ = __webpack_require__("c5e1");
 
 
 
-var Tilda_Paykeeper = /*#__PURE__*/function () {
-  function Paykeeper() {
-    _classCallCheck(this, Paykeeper);
+var Tilda_TildaPaykeeper = /*#__PURE__*/function () {
+  function TildaPaykeeper() {
+    _classCallCheck(this, TildaPaykeeper);
 
     this.server_url = 'https://severyane.server.paykeeper.ru/create/';
     this.init();
   }
 
-  _createClass(Paykeeper, [{
+  _createClass(TildaPaykeeper, [{
     key: "init",
     value: function init() {
       this.bindAjax();
@@ -3488,9 +3488,15 @@ var Tilda_Paykeeper = /*#__PURE__*/function () {
           var tildaPayment = JSON.parse(requestData.tildapayment);
           var amount = tildaPayment.amount;
           if ('delivery' in tildaPayment && 'price' in tildaPayment.delivery) amount += tildaPayment.delivery.price;
-          this.submitAmount(amount, order_id, requestData.Email, requestData.Phone); //console.log('tildaPayment', tildaPayment);
+          this.followPay(order_id); // this.submitAmount(amount, order_id, requestData.Email, requestData.Phone);
+          //console.log('tildaPayment', tildaPayment);
         }
       }
+    }
+  }, {
+    key: "followPay",
+    value: function followPay(order_id) {
+      window.location.replace('https://pay.delivery.severyane.moscow/order/' + order_id);
     }
   }, {
     key: "submitAmount",
@@ -3500,12 +3506,12 @@ var Tilda_Paykeeper = /*#__PURE__*/function () {
     }
   }]);
 
-  return Paykeeper;
+  return TildaPaykeeper;
 }();
 // CONCATENATED MODULE: ./sever_prototype/severyane_lib.js
 
 /* harmony default export */ var severyane_lib = ({
-  Paykeeper: Tilda_Paykeeper
+  'Paykeeper': Tilda_TildaPaykeeper
 });
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
