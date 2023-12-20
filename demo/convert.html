@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Russian to English Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    textarea {
+      width: 80%;
+      height: 100px;
+    }
+
+    input, button {
+      height: 30px;
+      font-size: 20px;
+      border-radius: 5px;
+      box-sizing: border-box;
+      margin: 0; padding: 3px 10px;
+    }
+    .form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Russian to English Converter</h1>
+  <p>Enter text using a Russian keyboard layout:</p>
+
+  <div class="form">
+  <input id="russianInput" type="text" placeholder="Type using Russian keyboard layout..." />
+  <button onclick="copyToClipboard()">Copy</button>
+</div>
+  <script>
+    function convertToEnglish() {
+      const russianInput = document.getElementById('russianInput').value;
+      const englishOutput = convertRussianToEnglish(russianInput);
+      return englishOutput;
+    }
+
+    function copyToClipboard() {
+      const englishOutput = convertToEnglish();
+      copyToClipboardText(englishOutput);
+    }
+
+    function clear() {
+      document.getElementById('russianInput').value = '';
+    }
+
+    function copyToClipboardText(text) {
+      // Create a temporary textarea element
+      const textarea = document.createElement('textarea');
+
+      // Set the value of the textarea to the provided text
+      textarea.value = text;
+
+      // Make the textarea invisible
+      textarea.style.position = 'absolute';
+      textarea.style.left = '-9999px';
+
+      // Append the textarea to the DOM
+      document.body.appendChild(textarea);
+
+      // Select the text in the textarea
+      textarea.select();
+
+      try {
+        // Use the Clipboard API to copy the text to the clipboard
+        document.execCommand('copy');
+        // console.log('Text copied to clipboard:', text);
+        clear()
+      } catch (err) {
+        // console.error('Unable to copy to clipboard:', err);
+      } finally {
+        // Remove the textarea from the DOM
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function convertRussianToEnglish(text) {
+      const russianToEnglishMap = {
+        'б': ',', 'Б': '<',
+        'й': 'q', 'ц': 'w', 'у': 'e', 'к': 'r', 'е': 't', 'н': 'y', 'г': 'u', 'ш': 'i', 'щ': 'o', 'з': 'p',
+        'ф': 'a', 'ы': 's', 'в': 'd', 'а': 'f', 'п': 'g', 'р': 'h', 'о': 'j', 'л': 'k', 'д': 'l',
+        'я': 'z', 'ч': 'x', 'с': 'c', 'м': 'v', 'и': 'b', 'т': 'n', 'ь': 'm',
+        'ё': '`', 'ж': ';', 'э': "'", 'ю': '.', 'ъ': ',', 'Й': 'Q', 'Ц': 'W', 'У': 'E', 'К': 'R', 'Е': 'T',
+        'Н': 'Y', 'Г': 'U', 'Ш': 'I', 'Щ': 'O', 'З': 'P', 'Ф': 'A', 'Ы': 'S', 'В': 'D', 'А': 'F', 'П': 'G',
+        'Р': 'H', 'О': 'J', 'Л': 'K', 'Д': 'L', 'Я': 'Z', 'Ч': 'X', 'С': 'C', 'М': 'V', 'И': 'B', 'Т': 'N',
+        'Ь': 'M', 'Ё': '~', 'Ж': ':', 'Э': '"', 'Ю': '>', 'Ъ': '<'
+      };
+
+      return text.split('').map(char => (russianToEnglishMap[char] !== undefined) ? russianToEnglishMap[char] : char).join('');
+    }
+  </script>
+
+</body>
+</html>
